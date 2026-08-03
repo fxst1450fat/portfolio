@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KUROMORI ｜ 現場に、定着する仕組みを。業務改善 × 生成AI活用</title>
+<meta name="description" content="製造業の現場で20年。業務改善と作業指導の経験を、生成AIと業務自動化で中小企業の現場へ。ヒアリングから実装・定着支援まで一貫して対応します。">
+<link rel="icon" href="assets/ai-bantou.png">
+<style>
+:root{
+  --ink:#17224F;
+  --ink-2:#2B3970;
+  --accent:#C8781E;
+  --accent-soft:#F5E9DA;
+  --bg:#FBFAF7;
+  --surface:#FFFFFF;
+  --line:#E3E0D9;
+  --text:#22252E;
+  --muted:#5F6472;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#C9D3FF;
+    --ink-2:#A9B6EE;
+    --accent:#E8A44E;
+    --accent-soft:#2A2718;
+    --bg:#12141A;
+    --surface:#191C24;
+    --line:#2C303B;
+    --text:#E6E8EE;
+    --muted:#9AA0B0;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+  line-height:1.9;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:960px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px}
+.brand{font-weight:800;letter-spacing:.14em;color:var(--ink);font-size:15px;text-decoration:none}
+.nav-links{margin-left:auto;display:flex;gap:22px;font-size:13.5px}
+.nav-links a{color:var(--muted);text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:88px 0 72px}
+.eyebrow{
+  display:inline-block;font-size:12px;letter-spacing:.18em;font-weight:700;
+  color:var(--ink);background:var(--accent-soft);
+  padding:6px 14px;border-radius:2px;margin-bottom:28px;
+}
+.hero h1{
+  font-size:clamp(30px,6vw,52px);line-height:1.35;font-weight:800;
+  color:var(--ink);letter-spacing:.01em;margin-bottom:28px;
+}
+.hero p.lead{font-size:clamp(15px,2.2vw,18px);color:var(--text);max-width:640px;line-height:2.05}
+.hero .sub{margin-top:20px;font-size:13.5px;color:var(--muted);letter-spacing:.06em}
+
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+  margin:52px 0 40px;
+}
+.stat{background:var(--surface);padding:26px 20px}
+.stat .num{font-size:clamp(24px,4.5vw,34px);font-weight:800;color:var(--ink);line-height:1.2;letter-spacing:-.01em}
+.stat .lbl{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.7}
+@media(max-width:640px){
+  .stats{grid-template-columns:1fr}
+}
+
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:14px 30px;font-size:14.5px;font-weight:700;
+  text-decoration:none;border:1.5px solid var(--ink);transition:.15s;
+}
+.btn-fill{background:var(--ink);color:var(--bg)}
+.btn-fill:hover{opacity:.85}
+.btn-line{color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--bg)}
+
+/* ---------- section ---------- */
+section{padding:76px 0}
+.sec-head{margin-bottom:48px}
+.sec-num{font-size:12px;letter-spacing:.2em;color:var(--accent);font-weight:700;display:block;margin-bottom:12px}
+.sec-head h2{font-size:clamp(23px,4vw,32px);font-weight:800;color:var(--ink);line-height:1.5}
+.sec-head p{margin-top:14px;color:var(--muted);font-size:14.5px}
+
+.band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* ---------- reasons ---------- */
+.reason{padding:34px 0;border-top:1px solid var(--line)}
+.reason:first-of-type{border-top:none}
+.reason h3{font-size:clamp(18px,3vw,22px);font-weight:800;color:var(--ink);margin-bottom:16px;line-height:1.6}
+.reason h3 .n{color:var(--accent);margin-right:12px;font-size:14px;letter-spacing:.1em}
+.reason p{color:var(--text);margin-bottom:12px}
+.reason .punch{
+  border-left:3px solid var(--accent);padding:4px 0 4px 16px;
+  font-weight:700;color:var(--ink);margin-top:18px;
+}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:720px){.skills{grid-template-columns:1fr}}
+.skill{background:var(--surface);border:1px solid var(--line);padding:28px 26px}
+.skill h3{font-size:17.5px;font-weight:800;color:var(--ink);margin-bottom:14px;line-height:1.6}
+.skill p{font-size:14.5px;color:var(--text);line-height:1.95}
+.tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:7px}
+.tag{
+  font-size:11.5px;color:var(--muted);border:1px solid var(--line);
+  padding:4px 10px;border-radius:2px;letter-spacing:.03em;
+}
+
+/* ---------- cases ---------- */
+.client-note{
+  background:var(--surface);border:1px solid var(--line);
+  padding:22px 26px;margin-bottom:44px;font-size:14px;color:var(--muted);line-height:2;
+}
+.client-note strong{color:var(--ink)}
+.case{border:1px solid var(--line);background:var(--surface);margin-bottom:36px}
+.case-hd{padding:26px 30px;border-bottom:1px solid var(--line);background:var(--ink)}
+.case-hd .cno{font-size:11.5px;letter-spacing:.2em;color:var(--bg);opacity:.65;font-weight:700}
+.case-hd h3{font-size:clamp(19px,3.2vw,24px);font-weight:800;color:var(--bg);margin-top:8px;line-height:1.5}
+.case-bd{padding:30px}
+.blk{margin-bottom:30px}
+.blk:last-child{margin-bottom:0}
+.blk h4{
+  font-size:12px;letter-spacing:.16em;font-weight:700;color:var(--accent);
+  margin-bottom:14px;
+}
+.blk p{font-size:15px;line-height:2}
+.blk ul{list-style:none;font-size:15px}
+.blk ul li{padding-left:20px;position:relative;margin-bottom:10px;line-height:1.95}
+.blk ul li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:1.5px;background:var(--accent)}
+.flow{
+  background:var(--bg);border:1px solid var(--line);padding:18px 20px;
+  font-size:13.5px;line-height:2.1;color:var(--text);
+  overflow-x:auto;white-space:pre;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:420px}
+th,td{border:1px solid var(--line);padding:11px 14px;text-align:left;line-height:1.7}
+th{background:var(--bg);font-weight:700;color:var(--ink);font-size:13px}
+td strong{color:var(--ink)}
+.formula{
+  background:var(--ink);color:var(--bg);padding:16px 20px;
+  font-weight:700;font-size:15.5px;letter-spacing:.03em;margin-bottom:18px;
+}
+.result{
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:18px 22px;font-size:15px;line-height:2;
+}
+.result strong{color:var(--ink);font-size:16.5px}
+.caveat{display:block;margin-top:8px;font-size:12.5px;color:var(--muted);line-height:1.8}
+
+/* ---------- steps ---------- */
+.step{display:flex;gap:24px;padding:28px 0;border-top:1px solid var(--line)}
+.step:first-of-type{border-top:none}
+.step-n{
+  flex:0 0 auto;width:44px;height:44px;border:1.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;color:var(--ink);font-size:15px;
+}
+.step-b h3{font-size:17.5px;font-weight:800;color:var(--ink);margin-bottom:10px}
+.step-b p{font-size:14.5px;line-height:1.95}
+.step-b .free{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--accent);font-weight:700}
+
+/* ---------- profile ---------- */
+.prof{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start}
+@media(max-width:720px){.prof{grid-template-columns:1fr;gap:24px}}
+.prof-img{background:var(--surface);border:1px solid var(--line);padding:14px}
+.prof-name{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:4px}
+.prof-role{font-size:13.5px;color:var(--muted);margin-bottom:24px;letter-spacing:.04em}
+.prof p{font-size:15px;line-height:2.05;margin-bottom:16px}
+.quote{
+  border-left:3px solid var(--accent);padding:6px 0 6px 18px;
+  font-weight:700;color:var(--ink);font-size:16px;line-height:1.9;margin:24px 0;
+}
+
+/* ---------- contact ---------- */
+.contact{text-align:center;padding:88px 0}
+.contact h2{font-size:clamp(23px,4vw,32px);font-weight:800;color:var(--ink);margin-bottom:22px;line-height:1.6}
+.contact p{color:var(--text);margin-bottom:34px;font-size:15.5px}
+.contact .btns{justify-content:center}
+.contact .note{margin-top:26px;font-size:13.5px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-size:12.5px;color:var(--muted);letter-spacing:.06em}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="#top" class="brand">KUROMORI</a>
+    <div class="nav-links">
+      <a href="#why">選ばれる理由</a>
+      <a href="#skills">できること</a>
+      <a href="#works">実績</a>
+      <a href="#flow">進め方</a>
+      <a href="#profile">プロフィール</a>
+      <a href="#contact">お問い合わせ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">業務改善 × 生成AI活用 × 業務自動化</span>
+    <h1>現場に、<br>定着する仕組みを。</h1>
+    <p class="lead">
+      製造業の現場で20年。<br>
+      業務改善と作業指導でやってきたことを、<br>
+      いまは生成AIと自動化で、中小企業の現場に届けています。
+    </p>
+    <p class="sub">KUROMORI ／ クロモリ</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">20年</div>
+        <div class="lbl">製造現場での業務改善・作業指導</div>
+      </div>
+      <div class="stat">
+        <div class="num">3システム</div>
+        <div class="lbl">小売業A社に5ヶ月で構築、全て稼働中</div>
+      </div>
+      <div class="stat">
+        <div class="num">4時間 → 10分</div>
+        <div class="lbl">販促POP制作時間の短縮実績</div>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a href="#works" class="btn btn-fill">実績を見る</a>
+      <a href="#contact" class="btn btn-line">お問い合わせ</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHY ============ -->
+<section id="why" class="band">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <span class="sec-num">WHY KUROMORI</span>
+      <h2>「作ってもらったが、<br>誰も使わなかった」を防ぎます。</h2>
+      <p>システム導入で一番多い失敗は、動かないことではなく、使われないことです。</p>
+    </div>
+
+    <div class="reason">
+      <h3><span class="n">01</span>「作って終わり」にしません</h3>
+      <p>新しい仕組みが現場に根づかない理由を、20年見てきました。海外拠点の新工場立ち上げでは1年半現地に入り、現地スタッフへの作業指導と品質基準の定着に取り組み、稼働工場として安定運用させました。</p>
+      <p class="punch">ツールを納品するのではなく、現場が回る状態までを仕事と考えています。</p>
+    </div>
+
+    <div class="reason">
+      <h3><span class="n">02</span>現場の言葉で話します</h3>
+      <p>製造業の現場叩き上げです。「どこで手が止まっているか」「なぜベテランにしかできないか」を、専門用語ではなく現場の言葉でヒアリングします。</p>
+      <p class="punch">要件定義から実装まで、すべて一人で担当します。伝言ゲームによる認識ズレが起きません。</p>
+    </div>
+
+    <div class="reason">
+      <h3><span class="n">03</span>APIがなくても止まりません</h3>
+      <p>中小企業のシステムは、外部連携できないものがほとんどです。実際に、APIを持たないPOSシステムから AutoHotkey と rclone を使い、毎朝6時に自動でデータを吸い上げる仕組みを構築しました。</p>
+      <p class="punch">「うちのシステムは古いから無理」で終わらせません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">WHAT I DO</span>
+      <h2>できること</h2>
+      <p>技術ではなく、解決する困りごとで並べています。</p>
+    </div>
+
+    <div class="skills">
+      <div class="skill">
+        <h3>数字が見えない、を解消する</h3>
+        <p>POSデータや売上データを自動で集めて、AIで分析。死に筋・欠品リスク・機会損失を可視化し、次の一手が決まる状態にします。</p>
+        <div class="tags"><span class="tag">AutoHotkey</span><span class="tag">rclone</span><span class="tag">Google Drive</span><span class="tag">Claude</span><span class="tag">Excel / PowerPoint</span></div>
+      </div>
+      <div class="skill">
+        <h3>人が足りない、を仕組みで埋める</h3>
+        <p>これまで人手でやっていた作業を、入力するだけで終わる形に置き換えます。専門知識のないスタッフでも回せる設計にします。</p>
+        <div class="tags"><span class="tag">ChatGPT</span><span class="tag">プロンプトエンジニアリング</span><span class="tag">画像生成AI</span><span class="tag">Excel</span></div>
+      </div>
+      <div class="skill">
+        <h3>気づけない、をなくす</h3>
+        <p>異常や機会損失を自動で検知し、担当者のLINEへ直接通知。「気づいた人が動く」ではなく「必ず気づく」状態にします。</p>
+        <div class="tags"><span class="tag">Google Apps Script</span><span class="tag">LINE Messaging API</span><span class="tag">Drive API</span><span class="tag">Claude Code</span></div>
+      </div>
+      <div class="skill">
+        <h3>属人化を、標準に変える</h3>
+        <p>ベテランの判断基準を数式とルールに落とし込み、誰がやっても同じ結果になるようにします。製造業の品質管理でやってきたことそのものです。</p>
+        <div class="tags"><span class="tag">業務ヒアリング</span><span class="tag">判定ロジック設計</span><span class="tag">手順書整備</span><span class="tag">定着支援</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKS ============ -->
+<section id="works" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">CASE STUDY</span>
+      <h2>実績</h2>
+    </div>
+
+    <div class="client-note">
+      <strong>小売業A社</strong>（アパレル小売／2店舗／従業員20名）<br>
+      2026年3月〜現在　業務委託　月20時間稼働<br>
+      <strong>要件定義から実装・定着支援まで、すべて単独で担当</strong>
+    </div>
+
+    <!-- CASE 01 -->
+    <article class="case">
+      <div class="case-hd">
+        <span class="cno">CASE 01</span>
+        <h3>週次 売上分析レポート</h3>
+      </div>
+      <div class="case-bd">
+        <div class="blk">
+          <h4>課題 — BEFORE</h4>
+          <p>社長が出張などで店に入れない期間、売れ筋商品の欠品に気づけるのはベテランスタッフだけでした。気づかないまま機会損失が発生していました。</p>
+        </div>
+        <div class="blk">
+          <h4>やったこと — SOLUTION</h4>
+          <ul>
+            <li>APIを持たないPOSシステムから、AutoHotkey で毎朝6時に販売データを自動抽出</li>
+            <li>rclone で店舗の Google ドライブへ自動転送</li>
+            <li>Claude で店舗別・商品別に分析し、問題点を抽出</li>
+            <li>PowerPoint / Excel で、社長がそのまま読める形に出力</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>成果 — RESULT</h4>
+          <div class="result">
+            これまで見えなかった <strong>死に筋商品・欠品リスク商品・機会損失商品</strong> が数字で見える状態に。<br>
+            社長が現場にいなくても、早め早めに手を打てるようになりました。
+          </div>
+        </div>
+        <div class="blk">
+          <h4>構成 — STACK</h4>
+          <div class="tags"><span class="tag">AutoHotkey</span><span class="tag">rclone</span><span class="tag">Google Drive</span><span class="tag">Claude</span><span class="tag">PowerPoint / Excel</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 02 -->
+    <article class="case">
+      <div class="case-hd">
+        <span class="cno">CASE 02</span>
+        <h3>AI 販促POP生成システム</h3>
+      </div>
+      <div class="case-bd">
+        <div class="blk">
+          <h4>課題 — BEFORE</h4>
+          <ul>
+            <li>Instagram用の販促POPを Canva で1枚ずつ手作業。1回あたり約4時間</li>
+            <li>作る人によって仕上がりの品質がばらつく</li>
+            <li>担当できる人が限られ、投稿ペースが上がらない</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>やったこと — SOLUTION</h4>
+          <p>Excel に商品情報を入力するだけで、POPが完成する流れを設計しました。</p>
+          <div class="flow">1. Excelに入力
+     ↓
+2. プロンプト自動生成
+     ↓
+3. ChatGPT で生成
+     ↓
+4. 商品画像を添付
+     ↓
+5. Instagram 販促POP 完成</div>
+          <ul style="margin-top:18px">
+            <li>1 / 4 / 8 / 16 / 24 商品に対応し、商品数に応じてレイアウトを自動切替</li>
+            <li>税込価格を自動計算</li>
+            <li>必須項目の自動チェック</li>
+            <li>販促心理学を反映した訴求文</li>
+            <li>商品画像を忠実に維持</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>成果 — RESULT</h4>
+          <div class="tbl-wrap">
+            <table>
+              <tr><th></th><th>Before</th><th>After</th></tr>
+              <tr><td>制作時間</td><td>約4時間／回</td><td><strong>約10分／回</strong></td></tr>
+              <tr><td>品質</td><td>担当者しだい</td><td><strong>誰が作っても同じ体裁</strong></td></tr>
+              <tr><td>担当できる人</td><td>一部のスタッフのみ</td><td><strong>専門知識なしで運用可能</strong></td></tr>
+            </table>
+          </div>
+          <div class="result" style="margin-top:20px">
+            現在、<strong>週5日・1日1回のペースで実運用中</strong>。<br>
+            ここで貯めた知見をもとに、チラシの内製化へ展開予定です。
+          </div>
+        </div>
+        <div class="blk">
+          <h4>構成 — STACK</h4>
+          <div class="tags"><span class="tag">Excel</span><span class="tag">ChatGPT</span><span class="tag">プロンプトエンジニアリング</span><span class="tag">画像生成AI</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 03 -->
+    <article class="case">
+      <div class="case-hd">
+        <span class="cno">CASE 03</span>
+        <h3>在庫切れ 機会損失アラート</h3>
+      </div>
+      <div class="case-bd">
+        <div class="blk">
+          <h4>課題 — BEFORE</h4>
+          <p>週次レポートだけでは、日々発生する欠品を防ぎきれませんでした。気づいたときには在庫切れが起きていました。</p>
+        </div>
+        <div class="blk">
+          <h4>やったこと — SOLUTION</h4>
+          <p>毎朝9時に、社長とスタッフのLINEへ自動でアラートが届く仕組みを構築しました。</p>
+          <div class="flow">POSシステム（CSV / Shift-JIS）
+     ↓ 毎朝エクスポート
+Google ドライブ（Drive API で参照）
+     ↓ 時刻トリガー実行
+Google Apps Script
+     ├ csvParser.gs  … Shift-JIS対応のCSV解析
+     ├ main.gs       … 残り日数の算出と緊急度判定
+     ├ lineNotify.gs … 通知文の整形と送信
+     └ config.gs     … PropertiesService による秘匿情報管理
+     ↓ 緊急度別に通知を整形
+LINE Messaging API → 社長・担当スタッフのLINE</div>
+        </div>
+        <div class="blk">
+          <h4>判定ロジック — LOGIC</h4>
+          <div class="formula">残り日数 ＝ 在庫数 ÷ 日次販売数</div>
+          <div class="tbl-wrap">
+            <table>
+              <tr><th>緊急度</th><th>条件</th><th>アクション</th></tr>
+              <tr><td><strong>緊急</strong></td><td>1.5日以下</td><td>即発注対象</td></tr>
+              <tr><td><strong>注意</strong></td><td>3.0日以下</td><td>早期発注推奨</td></tr>
+              <tr><td><strong>注視</strong></td><td>7.0日以下</td><td>在庫推移を監視</td></tr>
+              <tr><td><strong>安全</strong></td><td>7日超</td><td>通常運用</td></tr>
+            </table>
+          </div>
+          <p style="margin-top:18px">ベテランの勘に頼っていた発注判断を、数式と4段階のルールに落とし込みました。</p>
+        </div>
+        <div class="blk">
+          <h4>成果 — RESULT</h4>
+          <div class="result">
+            導入から1ヶ月時点で、社長の体感として <strong>在庫切れの発生が約50%減少</strong>。
+            <span class="caveat">※ 導入1ヶ月時点の定性評価です。今後、数値での効果測定を予定しています。</span>
+          </div>
+        </div>
+        <div class="blk">
+          <h4>構成 — STACK</h4>
+          <div class="tags"><span class="tag">Google Apps Script</span><span class="tag">LINE Messaging API</span><span class="tag">Drive API</span><span class="tag">PropertiesService</span><span class="tag">Claude Code</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ FLOW ============ -->
+<section id="flow">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <span class="sec-num">HOW IT WORKS</span>
+      <h2>進め方</h2>
+      <p>ご依頼いただいたあと、何が起きるかをご説明します。</p>
+    </div>
+
+    <div class="step">
+      <div class="step-n">01</div>
+      <div class="step-b">
+        <h3>現場ヒアリング</h3>
+        <p>オンラインでお話を伺います。「何が面倒か」「誰が困っているか」を、現場の言葉で整理します。</p>
+        <span class="free">ここまでは無料です</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <div class="step-b">
+        <h3>設計のご提案</h3>
+        <p>自動化する範囲・使う道具・作らない範囲を、図でご提示します。「作らない方がいいもの」もはっきりお伝えします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">03</div>
+      <div class="step-b">
+        <h3>実装</h3>
+        <p>要件定義から実装まで一人で担当します。途中経過を共有しながら進め、認識のズレが出ないようにします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">04</div>
+      <div class="step-b">
+        <h3>定着支援</h3>
+        <p>使う人が迷わないところまで見届けます。操作手順の整備と、初期運用の伴走を行います。ここを省略すると、仕組みは使われなくなります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROFILE ============ -->
+<section id="profile" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">PROFILE</span>
+      <h2>プロフィール</h2>
+    </div>
+
+    <div class="prof">
+      <div>
+        <div class="prof-img">
+          <img src="assets/ai-bantou.png" alt="KUROMORI のキャラクター「AI番頭」">
+        </div>
+      </div>
+      <div>
+        <div class="prof-name">KUROMORI</div>
+        <div class="prof-role">クロモリ ／ 業務改善 × 生成AI活用</div>
+
+        <p>製造業の現場で20年、業務改善と作業指導を中心に、品質・生産性の向上に携わってきました。新設備導入の検討、新工場立ち上げ時の現地業務指導、品質管理、稼働率向上まで一通り経験しています。</p>
+
+        <p>特に海外拠点での新工場立ち上げでは、1年半の現地勤務を通じて、現地スタッフへの作業指導と品質基準の定着に取り組み、稼働工場としての安定運用を実現しました。</p>
+
+        <p>現在は副業として、生成AI（ChatGPT・Claude）と GAS・API連携を組み合わせた業務自動化の支援を行っています。現場ヒアリングによる課題整理、自動化・AI活用の設計、実装、導入後の定着支援まで、一連の流れで対応します。</p>
+
+        <div class="quote">これまで経験してきた業務改善と、AIによる仕組みづくりで、社会に価値を提供したい。それがこの仕事をしている理由です。</div>
+
+        <p>「現場で長く使われる仕組みを作る」ことを、一貫して大切にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TERMS ============ -->
+<section id="terms">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <span class="sec-num">CONDITIONS</span>
+      <h2>稼働条件</h2>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th style="width:32%">稼働形態</th><td>副業（現在は会社員として製造業に従事）</td></tr>
+        <tr><th>稼働可能量</th><td>月40〜60時間程度</td></tr>
+        <tr><th>対応時間帯</th><td>平日の早朝・夜間、および土日が中心</td></tr>
+        <tr><th>打ち合わせ</th><td>オンライン。事前にご相談いただければ平日日中も調整可能です</td></tr>
+        <tr><th>勤務地</th><td>原則フルリモート</td></tr>
+        <tr><th>希望単価</th><td>時給 2,000円〜（業務内容・責任範囲に応じてご相談可能）</td></tr>
+        <tr><th>希望する案件</th><td>AI導入支援／業務改善／業務自動化／Dify・GAS・各種API連携を活用した仕組みづくり</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="band contact">
+  <div class="wrap narrow">
+    <h2>まずは、現状をお聞かせください。</h2>
+    <p>「これは自動化できるのか」といったご相談だけでも歓迎します。<br>初回のヒアリングは無料です。</p>
+    <div class="btns">
+      <a href="mailto:kuromori.shikumiya@gmail.com?subject=%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%EF%BC%88%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%E3%82%88%E3%82%8A%EF%BC%89" class="btn btn-fill">メールでご相談</a>
+    </div>
+    <p class="note">お返事は原則24時間以内にいたします。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© KUROMORI</div>
+</footer>
+
+</body>
+</html>
