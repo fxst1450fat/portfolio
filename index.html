@@ -80,8 +80,10 @@ a{color:inherit}
 .stat{background:var(--surface);padding:26px 20px}
 .stat .num{font-size:clamp(24px,4.5vw,34px);font-weight:800;color:var(--ink);line-height:1.2;letter-spacing:-.01em}
 .stat .lbl{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.7}
+.stats-4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:640px){
   .stats{grid-template-columns:1fr}
+  .stats-4{grid-template-columns:1fr 1fr}
 }
 
 .btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -211,6 +213,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-si
       <a href="#why">選ばれる理由</a>
       <a href="#skills">できること</a>
       <a href="#works">実績</a>
+      <a href="#foundation">20年の土台</a>
       <a href="#flow">進め方</a>
       <a href="#profile">プロフィール</a>
       <a href="#contact">お問い合わせ</a>
@@ -409,7 +412,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-si
             </table>
           </div>
           <div class="result" style="margin-top:20px">
-            現在、<strong>週5日・1日1回のペースで実運用中</strong>。<br>
+            現在、<strong>週2日・1日1回のペースで実運用中</strong>。<br>
             ここで貯めた知見をもとに、チラシの内製化へ展開予定です。
           </div>
         </div>
@@ -473,6 +476,86 @@ LINE Messaging API → 社長・担当スタッフのLINE</div>
         </div>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- ============ FOUNDATION ============ -->
+<section id="foundation">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">FOUNDATION</span>
+      <h2>この仕組みづくりは、<br>20年前から始まっています。</h2>
+      <p>製造業の生産現場での実績です。守秘のため、業種・時期・企業規模の記載は控えています。</p>
+    </div>
+
+    <div class="stats stats-4">
+      <div class="stat"><div class="num">20年</div><div class="lbl">製造現場での<br>業務改善・作業指導</div></div>
+      <div class="stat"><div class="num">約50名</div><div class="lbl">指導・管理対象<br>（国内）</div></div>
+      <div class="stat"><div class="num">100件+</div><div class="lbl">実施した<br>改善提案</div></div>
+      <div class="stat"><div class="num">30件+</div><div class="lbl">標準化した<br>作業手順書</div></div>
+    </div>
+
+    <article class="case">
+      <div class="case-hd">
+        <span class="cno">OVERSEAS</span>
+        <h3>海外 新工場の立ち上げと、安定稼働化</h3>
+      </div>
+      <div class="case-bd">
+        <div class="blk">
+          <h4>役割 — ROLE</h4>
+          <ul>
+            <li>海外拠点の新工場立ち上げに、現地トレーナーとして参画</li>
+            <li>現地のグループリーダーおよび作業者 <strong>約40名</strong> への作業指導を担当</li>
+            <li>設備設置後の作業確認、稼働率向上・品質向上のための作業ポイント票を作成</li>
+            <li>問題点をグループリーダーへ伝え、そこから作業者へ展開する指導体制を構築</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>成果 — RESULT</h4>
+          <div class="result">
+            着任から <strong>約6ヶ月で、量産ラインの安定稼働を実現</strong>。
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-hd">
+        <span class="cno">TROUBLE SHOOTING</span>
+        <h3>原因究明と、再発防止の仕組み化</h3>
+      </div>
+      <div class="case-bd">
+        <div class="blk">
+          <h4>事象 — PROBLEM</h4>
+          <p>新規導入した設備で、稼働中の不具合が <strong>1日あたり10件</strong> 発生。調整による対応では解消せず、稼働の妨げとなっていました。</p>
+        </div>
+        <div class="blk">
+          <h4>原因究明と対策 — SOLUTION</h4>
+          <ul>
+            <li>調査を重ね、特定部品の緩みが原因ではないかと仮説を設定</li>
+            <li>日本から部品を手配し、交換を実施</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>成果 — RESULT</h4>
+          <div class="result">
+            不具合発生を <strong>1日10件 → 0件</strong> に解消。
+          </div>
+        </div>
+        <div class="blk">
+          <h4>歯止め — PREVENTION</h4>
+          <p>直して終わりにせず、<strong>定期交換の手順を文書化</strong>。現場がメンテナンスを継続できる仕組みとして落とし込み、対策が一過性で終わらない状態にしました。</p>
+          <div class="result" style="margin-top:18px">
+            ベテランの経験を、<strong>誰でも実行できる手順に変える。</strong><br>
+            在庫アラートで発注判断を数式と4段階のルールに落とし込んだのも、まったく同じ考え方です。
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <p style="font-size:13px;color:var(--muted);line-height:1.9;margin-top:8px">
+      ※ 各改善施策の効果（稼働率・不良率・工数）については、当時の測定記録が手元に残っていないため、数値としての記載を控えています。上記の件数・人数・期間は、すべて実数です。
+    </p>
   </div>
 </section>
 
